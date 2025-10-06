@@ -4,13 +4,13 @@ from pydantic import BaseModel
 import requests
 import os
 from graph import create_graph
+from dotenv import load_dotenv 
+load_dotenv()  
 
 app = FastAPI()
 
-GEMINI_API_KEY = os.getenv(
-    "GOOGLE_API_KEY",
-    "AIzaSyAcbmSCyReOZNYiYbv9qJqm0Gc_uBLdBZ8"
-)
+api_key = os.getenv("GOOGLE_API_KEY")
+
 
 graph = create_graph()
 graph_state = graph.compile()
@@ -23,7 +23,7 @@ async def chat(req: ChatRequest):
     user_msg = req.user_message
 
     model = "gemini-2.5-flash" 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={GEMINI_API_KEY}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
 
     payload = {
         "contents": [
