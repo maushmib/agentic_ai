@@ -3,7 +3,7 @@ import requests
 
 API_URL = "http://127.0.0.1:8000/chat"  
 
-st.title("LangGraph + FastAPI + Streamlit Chatbot")
+st.title("Chatbot")
 
 if "history" not in st.session_state:
     st.session_state.history = []
@@ -21,6 +21,5 @@ if st.button("Send"):
         st.session_state.history.append(("You", user_input))
         st.session_state.history.append(("Bot", ai_reply))
 
-# Show chat history
 for speaker, msg in st.session_state.history:
     st.write(f"{speaker}:** {msg}")

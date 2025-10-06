@@ -53,8 +53,6 @@ async def chat(req: ChatRequest):
     except (KeyError, IndexError) as e:
      return {"reply": f"Error parsing Gemini response: {data}"}
 
-
-    # Update LangGraph state
     state = {"messages": [f"User: {user_msg}", f"Bot: {ai_reply}"]}
     graph_state.invoke(state)
 
