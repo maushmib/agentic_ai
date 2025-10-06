@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+streamlit
+requests
+langchain_google_genai
+langgraph
+typing_extensions
